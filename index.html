@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pulse - Pomodoro Focus Timer</title>
+  <meta name="description" content="Pulse is a premium dark-mode pomodoro focus timer with a glowing progress ring, automatic break cues and zero clutter.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='42' fill='%237c5cff'/%3E%3Ccircle cx='50' cy='50' r='20' fill='%2322d3ee'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="bg" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="#main" aria-label="Pulse - back to top">
+      <span class="brand-dot" aria-hidden="true"></span>Pulse
+    </a>
+    <span class="tagline">focus in waves</span>
+  </header>
+
+  <main id="main">
+    <h1 class="headline">Stay <span class="grad">locked&nbsp;in.</span></h1>
+    <p class="sub">A pomodoro timer that glows while you grind - 25-minute focus waves, automatic break cues, zero clutter.</p>
+
+    <section class="timer-card" aria-label="Pomodoro timer">
+      <div class="modes" role="group" aria-label="Timer mode">
+        <button class="mode is-active" type="button" data-mode="focus" aria-pressed="true">Focus</button>
+        <button class="mode" type="button" data-mode="short" aria-pressed="false">Short break</button>
+        <button class="mode" type="button" data-mode="long" aria-pressed="false">Long break</button>
+      </div>
+
+      <div class="dial" id="dial">
+        <svg class="ring" viewBox="0 0 260 260" role="img" aria-label="Time remaining ring">
+          <defs>
+            <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#7c5cff"/>
+              <stop offset="100%" stop-color="#22d3ee"/>
+            </linearGradient>
+          </defs>
+          <circle class="ring-track" cx="130" cy="130" r="118"/>
+          <circle class="ring-fill" id="ringFill" cx="130" cy="130" r="118"/>
+        </svg>
+        <div class="readout">
+          <time id="timeLeft" datetime="25:00">25:00</time>
+          <span id="modeLabel">focus session</span>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="startBtn" class="btn btn-primary" type="button">Start</button>
+        <button id="resetBtn" class="btn btn-ghost" type="button" aria-label="Reset timer">Reset</button>
+      </div>
+
+      <div class="dots" id="dots" aria-label="Focus sessions completed in this cycle"></div>
+      <p class="sr-only" role="status" id="announce"></p>
+    </section>
+
+    <section class="stats" aria-label="Your session stats">
+      <div class="stat"><span id="statFocus">0</span><small>focus sessions</small></div>
+      <div class="stat"><span id="statMinutes">0</span><small>minutes focused</small></div>
+      <div class="stat"><span id="statStreak">1</span><small>current cycle</small></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Built with vanilla HTML, CSS and JS - no frameworks, no trackers.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
